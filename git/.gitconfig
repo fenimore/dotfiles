@@ -1,0 +1,11 @@
+[core]
+	excludesfile = /Users/fenimore/.gitignore_global
+
+[user]
+	name = Fenimore Love
+	email = fenimore.love@magnetic.com
+
+[alias]
+	st = status
+	ci = commit
+  mg = !git remote update --prune && git merge --ff-only @{u}%
