@@ -24,7 +24,7 @@ ZSH_THEME="gianu"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -64,5 +64,5 @@ export PATH=$PATH:$GOPATH/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export PYTHONPATH=$PYTHONPATH:$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
-export SPARK_HOME=/opt/spark/spark-2.0.2-bin-hadoop2.7
+export SPARK_HOME=/opt/spark/spark-2.0.2-bin-hadoop2.4
+export PYTHONPATH=$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH

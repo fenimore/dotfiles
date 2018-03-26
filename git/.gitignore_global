@@ -19,3 +19,9 @@ tslint.json
 tsfmt.json
 
 *.swp
+
+_adx.pypy-41.so
+_adx.so
+_vw.pypy-41.so
+_vw.so
+nohup.out
