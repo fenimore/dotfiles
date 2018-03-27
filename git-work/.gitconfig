@@ -5,8 +5,12 @@
 	name = Fenimore Love
 	email = fenimore.love@magnetic.com
 
+[format]
+	pretty = "%H %ci %ce %ae %d %s"
+
 [alias]
 	st = status
 	ci = commit
 	mg = !git remote update --prune && git merge --ff-only @{u}%
 	lg = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	pub = !git push -u origin $(git branch-name)
