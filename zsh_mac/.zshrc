@@ -67,6 +67,9 @@ export PATH=$PATH:$GOPATH/bin
 export SPARK_HOME=/opt/spark/spark-2.0.2-bin-hadoop2.4
 export PYTHONPATH=$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
 
+# Postgres
+PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
 ## Aliases
 ## Show hidden files ##
 alias l.='ls -d .* --color=auto'
