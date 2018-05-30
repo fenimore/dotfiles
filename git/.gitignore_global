@@ -10,6 +10,8 @@
 .pylintrc
 _trial_temp
 *.egg-info
+dist/
+.eggs/
 
 .\#*
 *~
@@ -26,3 +28,4 @@ _adx.so
 _vw.pypy-41.so
 _vw.so
 nohup.out
+version.txt

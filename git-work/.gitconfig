@@ -1,5 +1,6 @@
 [core]
 	excludesfile = /Users/fenimore/.gitignore_global
+	editor = zile
 
 [user]
 	name = Fenimore Love

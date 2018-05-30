@@ -43,7 +43,7 @@ plugins=(git zsh-autosuggestions zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='emacs'
+export EDITOR='zile'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -52,10 +52,12 @@ export EDITOR='emacs'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Pip and Virtualenv
+export PATH="$PATH:/usr/local/opt/python/bin"
 export PYTHONDONTWRITEBYTECODE=1
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 export WORKON_HOME=~/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
 
 # Golang
 export PATH=~/.local/bin:$PATH
