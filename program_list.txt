@@ -1,21 +1,27 @@
-fd
-ccat
-htop
-curl
-wget
-emacs
-go
-just
-mycli
-stow
-sqlite
 zile
 zsh
+curl
+htop
+wget
+stow
+
+fd
+ccat
+
+go
+
+just
 tree
 visidata
-# docker #check your distro
-postgressql
 ncdu
+
+# emacs
+# docker #check your distro
+
+mycli
+sqlite
+postgressql
+
 
 
 
@@ -26,5 +32,6 @@ transmission-gtk
 insomnia
 
 # Mac
+# emacs
 # iterm2
 # spectacle

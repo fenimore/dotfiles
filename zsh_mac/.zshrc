@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/fenimore/.oh-my-zsh
+export ZSH=/Users/flove/.oh-my-zsh
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="gianu"
@@ -54,10 +54,7 @@ export EDITOR='zile'
 # Pip and Virtualenv
 export PATH="$PATH:/usr/local/opt/python/bin"
 export PYTHONDONTWRITEBYTECODE=1
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-
 
 # Golang
 export PATH=~/.local/bin:$PATH
