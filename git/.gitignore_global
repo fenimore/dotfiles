@@ -9,6 +9,7 @@
 *.cache
 .pylintrc
 _trial_temp
+_trial_temp*
 *.egg-info
 dist/
 .eggs/

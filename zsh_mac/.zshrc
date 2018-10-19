@@ -51,10 +51,17 @@ export EDITOR='zile'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+#export PROJECT_HOME=$HOME/Devel
 # Pip and Virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
 export PATH="$PATH:/usr/local/opt/python/bin"
 export PYTHONDONTWRITEBYTECODE=1
-export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+
+
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Golang
 export PATH=~/.local/bin:$PATH
@@ -63,7 +70,7 @@ export PATH=$PATH:$GOPATH/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export SPARK_HOME=/opt/spark/spark-2.0.2-bin-hadoop2.4
+export SPARK_HOME=/opt/spark/spark-2.3.1/pyspark
 export PYTHONPATH=$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
 
 # Postgres
@@ -84,3 +91,41 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 
 alias mkdir='mkdir -pv'
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+# Java 8 for spark
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home"
+
+
+
+export BOTO_CONFIG=$XDG_CONFIG_HOME/boto.ini
+
+export LDAPRC=$XDG_CONFIG_HOME/ldap.conf
+alias ldap="ldapsearch -LLL -o ldif-wrap=no -y $XDG_CONFIG_HOME/ldap.credentials -x"
+ldap_fields=(department division employeeID givenName mail mobile personalTitle physicalDeliveryOfficeName title wWWHomePage co l st sn lastLogon)
+function card() {
+    ldap $1 $ldap_fields | ldif2json | jq '
+        include "filename";
+        .
+        | .dn |= (. / "," | map(. / "="))
+        | .name = "\(.givenName) \(.sn)"
+        | del(.givenName)
+        | del(.sn)
+        | if .physicalDeliveryOfficeName == .l then
+              del(.physicalDeliveryOfficeName)
+          else
+              .
+          end
+        | .location = "\(.l), \(.st)" +
+            if .co != "United States" then
+                ", \(.co)"
+            else
+                ""
+            end
+        | del(.l)
+        | del(.st)
+        | del(.co)
+    '
+}
+function cards() {
+    card $1 | jq -c . | selecta | jq
+}
