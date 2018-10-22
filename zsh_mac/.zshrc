@@ -95,13 +95,13 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 # Java 8 for spark
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home"
 
-
-
-export BOTO_CONFIG=$XDG_CONFIG_HOME/boto.ini
+export XDG_CONFIG_HOME="/Users/flove/.config"
 
 export LDAPRC=$XDG_CONFIG_HOME/ldap.conf
-alias ldap="ldapsearch -LLL -o ldif-wrap=no -y $XDG_CONFIG_HOME/ldap.credentials -x"
+alias ldap="ldapsearch -LLL -o ldif-wrap=no -y $XDG_CONFIG_HOME/ldap.conf -x"
+
 ldap_fields=(department division employeeID givenName mail mobile personalTitle physicalDeliveryOfficeName title wWWHomePage co l st sn lastLogon)
+
 function card() {
     ldap $1 $ldap_fields | ldif2json | jq '
         include "filename";
@@ -126,6 +126,7 @@ function card() {
         | del(.co)
     '
 }
+
 function cards() {
     card $1 | jq -c . | selecta | jq
 }
