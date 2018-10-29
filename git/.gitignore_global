@@ -1,3 +1,4 @@
+.tox/
 .hypothesis
 .idea/
 *.pyc
@@ -8,7 +9,10 @@
 *.cache
 .pylintrc
 _trial_temp
+_trial_temp*
 *.egg-info
+dist/
+.eggs/
 
 .\#*
 *~
@@ -19,3 +23,10 @@ tslint.json
 tsfmt.json
 
 *.swp
+
+_adx.pypy-41.so
+_adx.so
+_vw.pypy-41.so
+_vw.so
+nohup.out
+version.txt

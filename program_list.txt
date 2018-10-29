@@ -1,0 +1,37 @@
+zile
+zsh
+curl
+htop
+wget
+stow
+
+fd
+ccat
+
+go
+
+just
+tree
+visidata
+ncdu
+
+# emacs
+# docker #check your distro
+
+mycli
+sqlite
+postgressql
+
+
+
+
+
+# GUI
+firefox
+transmission-gtk
+insomnia
+
+# Mac
+# emacs
+# iterm2
+# spectacle
