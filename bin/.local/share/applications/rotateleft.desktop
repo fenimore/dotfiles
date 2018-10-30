@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=rotateleft
+Comment=rotate the screen to portrait
+Exec=/home/fenimore/.bin/rotateleft
+Type=Application
+Categories=Utilities;

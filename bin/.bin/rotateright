@@ -1,0 +1,4 @@
+#!/bin/bash
+
+hash xrandr 2>/dev/null || { echo >&2 "I require xrandr (you're probably on wayland). ABORT"; exit 1; }
+xrandr --output HDMI-2 --rotate normal

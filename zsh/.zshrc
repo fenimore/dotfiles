@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/fenimore/.oh-my-zsh
+export ZSH=/home/fenimore/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -104,6 +104,7 @@ export GOPATH=/home/fenimore/access/go
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export ANDROID_HOME=/opt/android-sdk
+export PATH=$PATH:$HOME/.bin # for scripts checked into dotfiles
 
 
 #fortune .ascii/fortune | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
