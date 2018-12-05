@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=shrug
+Comment=copy shrug emoji to keyboard
+Exec=/home/fenimore/.bin/shrug
+Type=Application
+Categories=Utilities;

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=rotateright
+Comment=rotate the screen back to normal
+Exec=/home/fenimore/.bin/rotateright
+Type=Application
+Categories=Utilities;
