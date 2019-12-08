@@ -90,6 +90,11 @@ alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
 
+
+# for disabling netscope
+alias disable-netscope="launchctl unload /Library/LaunchDaemons/com.netskope.stagentsvc.plist"
+
+
 alias mkdir='mkdir -pv'
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 # Java 8 for spark
