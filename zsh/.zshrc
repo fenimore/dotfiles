@@ -66,6 +66,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# turn off beep
+unsetopt LIST_BEEP
+unsetopt BEEP
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -75,9 +78,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='emacs -nw'
+     export EDITOR='emacsclient -t'
  else
-   export EDITOR='emacs -nw'
+     export EDITOR='emacsclient -t'
  fi
 
 # Compilation flags
@@ -94,18 +97,24 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias emacs="emacsclient -t
+"
 alias cat="ccat"
 alias diff="diff-so-fancy"
 alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
-alias man="tldr"
 
 export GOPATH=/home/fenimore/access/go
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export ANDROID_HOME=/opt/android-sdk
+export SPARK_HOME=/opt/apache-spark
 export PATH=$PATH:$HOME/.bin # for scripts checked into dotfiles
+export PATH=$PATH:$SPARK_HOME/bin
 
+# pyspark shell should use jupyter
+export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
 #fortune .ascii/fortune | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
 
