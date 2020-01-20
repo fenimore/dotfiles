@@ -62,6 +62,7 @@ plugins=(
   git
   zsh-syntax-highlighting
   zsh-autosuggestions
+  zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -101,7 +102,7 @@ alias emacs="emacsclient -t
 "
 alias cat="ccat"
 alias diff="diff-so-fancy"
-alias find="fd"
+#alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
 export GOPATH=/home/fenimore/access/go
