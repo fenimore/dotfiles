@@ -40,31 +40,18 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ivy
-     racket
      git
      yaml
      javascript
      csv
-     python
-     docker
      php
      html
-     rust
      markdown
-     sql
-     go
      themes-megapack
      auto-completion
-     ;; better-defaults
      emacs-lisp
      multiple-cursors
-     neotree
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
      syntax-checking
-     ;; version-control
      )
 
    ;; List of additional packages that will be installed without being
@@ -469,17 +456,6 @@ before packages are loaded."
 
   ;; Fix color console output
   (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
-  ;; Python
-  (setq python-shell-interpreter "python")
-
-  ;; Golang
-  ;;(setq gofmt-command "goimports") ;; auto import
-  (setq go-format-before-save nil)
-  ;;(setq go-tab-width 4)
-
-  ;; Rust
-  (setq rust-format-on-save t)
 
   ;; Fuck highlihgtin current line
   (global-hl-line-mode -1)

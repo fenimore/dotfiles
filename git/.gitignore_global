@@ -1,4 +1,5 @@
 Justfile
+.mypy_cache/
 .tox/
 .hypothesis
 .idea/

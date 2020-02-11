@@ -1,0 +1,13 @@
+#!/bin/bash
+printf "\${color1}┣━[1] \${color2}\${cpu cpu1}\n"
+printf "\${color1}┃ \${color2}\${cpugraph 1 15,370 555555 AAAAAA -t -l}\n"
+printf "\${color1}┃\n"
+printf "\${color1}┣━[2] \${color2}\${cpu cpu2}\n"
+printf "\${color1}┃ \${color2}\${cpugraph 2 15,370 555555 AAAAAA -t -l}\n"
+printf "\${color1}┃\n"
+printf "\${color1}┣━[3] \${color2}\${cpu cpu3}\n"
+printf "\${color1}┃ \${color2}\${cpugraph 3 15,370 555555 AAAAAA -t -l}\n"
+printf "\${color1}┃\n"
+printf "\${color1}┣━[4] \${color2}\${cpu cpu4}\n"
+printf "\${color1}┃ \${color2}\${cpugraph 4 15,370 555555 AAAAAA -t -l}\n"
+printf "\${color1}┃\n"
