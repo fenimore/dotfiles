@@ -70,7 +70,9 @@ export PATH=$PATH:$GOPATH/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export SPARK_HOME=/opt/spark/spark-2.3.1/pyspark
+export HADOOP_CONF_DIR=/etc/hadoop/conf
+export PATH=$PATH:/opt/spark/spark-2.4.2-bin-hadoop2.7/bin
+export SPARK_HOME=/opt/spark/spark-2.4.2-bin-hadoop2.7
 export PYTHONPATH=$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
 
 # Postgres
@@ -135,3 +137,5 @@ function card() {
 function cards() {
     card $1 | jq -c . | selecta | jq
 }
+
+

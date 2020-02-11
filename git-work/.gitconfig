@@ -4,7 +4,7 @@
 
 [user]
 	name = Fenimore Love
-	email = fenimore.love@magnetic.com
+	email = flove@deloitte.com
 
 [format]
 	pretty = "%H %ci %ce %ae %d %s"

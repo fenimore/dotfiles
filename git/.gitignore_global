@@ -1,3 +1,4 @@
+Justfile
 .tox/
 .hypothesis
 .idea/
