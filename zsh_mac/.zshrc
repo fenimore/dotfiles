@@ -60,80 +60,83 @@ export PYTHONDONTWRITEBYTECODE=1
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 
-
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Golang
-export PATH=~/.local/bin:$PATH
+# export PATH=~/.local/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export HADOOP_CONF_DIR=/etc/hadoop/conf
-export PATH=$PATH:/opt/spark/spark-2.4.2-bin-hadoop2.7/bin
-export SPARK_HOME=/opt/spark/spark-2.4.2-bin-hadoop2.7
-export PYTHONPATH=$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
+# export HADOOP_CONF_DIR=/etc/hadoop/conf
+# export PATH=$PATH:/opt/spark/spark-2.4.2-bin-hadoop2.7/bin
+# export SPARK_HOME=/opt/spark/spark-2.4.2-bin-hadoop2.7
+# export PYTHONPATH=$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
+export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.5/libexec
+export PYTHONPATH=/usr/local/Cellar/apache-spark/2.4.5/libexec/python/:$PYTHONPATH
+
+
+#export SPARK_HOME=/usr/local/opt/spark/spark-2.4.5-bin-without-hadoop
+#export PATH=$PATH:$SPARK_HOME/bin
 
 # Postgres
-PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+# PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 ## Aliases
 ## Show hidden files ##
-alias l.='ls -d .* --color=auto'
+
 ## get rid of command not found ##
 alias cd..='cd ..'
 
-## a quick way to get out of current directory ##
-alias ..='cd ..'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
-alias .....='cd ../../../../'
-alias .4='cd ../../../../'
-alias .5='cd ../../../../..'
-
-
-# for disabling netscope
-alias disable-netscope="launchctl unload /Library/LaunchDaemons/com.netskope.stagentsvc.plist"
-
-
 alias mkdir='mkdir -pv'
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-# Java 8 for spark
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home"
 
 export XDG_CONFIG_HOME="/Users/flove/.config"
 
-export LDAPRC=$XDG_CONFIG_HOME/ldap.conf
-alias ldap="ldapsearch -LLL -o ldif-wrap=no -y $XDG_CONFIG_HOME/ldap.conf -x"
+# Java 8 for spark
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home"
 
-ldap_fields=(department division employeeID givenName mail mobile personalTitle physicalDeliveryOfficeName title wWWHomePage co l st sn lastLogon)
 
-function card() {
-    ldap $1 $ldap_fields | ldif2json | jq '
-        include "filename";
-        .
-        | .dn |= (. / "," | map(. / "="))
-        | .name = "\(.givenName) \(.sn)"
-        | del(.givenName)
-        | del(.sn)
-        | if .physicalDeliveryOfficeName == .l then
-              del(.physicalDeliveryOfficeName)
-          else
-              .
-          end
-        | .location = "\(.l), \(.st)" +
-            if .co != "United States" then
-                ", \(.co)"
-            else
-                ""
-            end
-        | del(.l)
-        | del(.st)
-        | del(.co)
-    '
+# For compilers to find libpq you may need to set:
+export LDFLAGS="-L/usr/local/opt/libpq/lib"
+export CPPFLAGS="-I/usr/local/opt/libpq/include"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+# Invoke tab-completion script to be sourced with the Z shell.
+# Known to work on zsh 5.0.x, probably works on later 4.x releases as well (as
+# it uses the older compctl completion system).
+_complete_invoke() {
+    # `words` contains the entire command string up til now (including
+    # program name).
+    #
+    # We hand it to Invoke so it can figure out the current context: spit back
+    # core options, task names, the current task's options, or some combo.
+    #
+    # Before doing so, we attempt to tease out any collection flag+arg so we
+    # can ensure it is applied correctly.
+    collection_arg=''
+    if [[ "${words}" =~ "(-c|--collection) [^ ]+" ]]; then
+        collection_arg=$MATCH
+    fi
+    # `reply` is the array of valid completions handed back to `compctl`.
+    # Use ${=...} to force whitespace splitting in expansion of
+    # $collection_arg
+    reply=( $(invoke ${=collection_arg} --complete -- ${words}) )
 }
 
-function cards() {
-    card $1 | jq -c . | selecta | jq
-}
+
+# Tell shell builtin to use the above for completing our given binary name(s).
+# * -K: use given function name to generate completions.
+# * +: specifies 'alternative' completion, where options after the '+' are only
+#   used if the completion from the options before the '+' result in no matches.
+# * -f: when function generates no results, use filenames.
+# * positional args: program names to complete for.
+compctl -K _complete_invoke + -f invoke inv
+
+
+if [ -f ~/.zsh_secrets ]; then
+    source ~/.zsh_secrets
+else
+    print "404: ~/.zsh_secrets not found."
+fi
