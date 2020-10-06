@@ -543,10 +543,12 @@ before packages are loaded."
   ;(json :variables json-fmt-tool 'web-beautify-js)
   ;(json :variables json-fmt-on-save t)
   ;(add-hook 'web-mode-hook 'prettier-js-mode)
-  (eval-after-load 'json-mode
-    '(add-hook 'json-mode-hook
-               (lambda ()
-                 (add-hook 'before-save-hook 'prettier-js-mode))))
+
+  ;;(add-hook 'json-mode-hook 'prettier-js-mode)
+  ;;(eval-after-load 'json-mode
+    ;;'(add-hook 'json-mode-hook
+               ;;(lambda ()
+               ;;(add-hook 'before-save-hook 'prettier-js-mode))))
 
 
   ;; JSON

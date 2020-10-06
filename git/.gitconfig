@@ -16,6 +16,7 @@
 [alias]
 	st = status
 	ci = commit
+	co = checkout
 	mg = !git remote update --prune && git merge --ff-only @{u}%
 	lg = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	pub = !git push -u origin $(git branch-name)
@@ -23,3 +24,5 @@
 	gpgsign = true
 [push]
 	default = current
+[merge]
+	ff = false

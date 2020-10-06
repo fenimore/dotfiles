@@ -57,7 +57,7 @@ export EDITOR='zile'
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH="$PATH:/usr/local/opt/python/bin"
 export PYTHONDONTWRITEBYTECODE=1
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 
 source /usr/local/bin/virtualenvwrapper.sh
@@ -73,10 +73,8 @@ export PATH=$PATH:$GOPATH/bin
 # export PATH=$PATH:/opt/spark/spark-2.4.2-bin-hadoop2.7/bin
 # export SPARK_HOME=/opt/spark/spark-2.4.2-bin-hadoop2.7
 # export PYTHONPATH=$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.3-src.zip:$PYTHONPATH
-export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.5/libexec
-export PYTHONPATH=/usr/local/Cellar/apache-spark/2.4.5/libexec/python/:$PYTHONPATH
-
-
+# export SPARK_HOME=/usr/local/Cellar/apache-spark/2.4.5/libexec
+# export PYTHONPATH=/usr/local/Cellar/apache-spark/2.4.5/libexec/python/:$PYTHONPATH
 #export SPARK_HOME=/usr/local/opt/spark/spark-2.4.5-bin-without-hadoop
 #export PATH=$PATH:$SPARK_HOME/bin
 
