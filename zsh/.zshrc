@@ -118,7 +118,7 @@ export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
 #fortune .ascii/fortune | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
-
+export ANSIBLE_NOCOWS=1
 
 export RUST_SRC_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/
 
