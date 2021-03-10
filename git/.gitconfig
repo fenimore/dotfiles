@@ -4,7 +4,7 @@
 
 [user]
 	name = Fenimore Love
-
+	email = exorable.ludos@gmail.com
 
 [format]
 	pretty = "%H %ci %ce %ae %d %s"
@@ -24,7 +24,7 @@
 	default = current
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [push]
 	default = current
