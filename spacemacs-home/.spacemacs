@@ -216,7 +216,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 18
                                :weight normal
                                :width normal)
 
@@ -508,12 +508,12 @@ before packages are loaded."
   ;; Fuck highlihgtin current line
   (global-hl-line-mode -1)
 
-  (eval-after-load 'smartparens
-    '(progn
-       (sp-pair "(" nil :actions :rem)
-       (sp-pair "[" nil :actions :rem)
-       (sp-pair "'" nil :actions :rem)
-       (sp-pair "\"" nil :actions :rem)))
+  ;; (eval-after-load 'smartparens
+  ;;   '(progn
+  ;;      (sp-pair "(" nil :actions :rem)
+  ;;      (sp-pair "[" nil :actions :rem)
+  ;;      (sp-pair "'" nil :actions :rem)
+  ;;      (sp-pair "\"" nil :actions :rem)))
 
   )
 

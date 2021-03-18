@@ -98,10 +98,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias emacs="emacsclient -t
-"
-alias cat="ccat"
-alias diff="diff-so-fancy"
+alias emacs="emacsclient -t"
+
 #alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 

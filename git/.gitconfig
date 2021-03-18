@@ -29,5 +29,9 @@
 [push]
 	default = current
 
+[pull]
+	rebase = true
+	default = current
+
 [merge]
 	ff = false
