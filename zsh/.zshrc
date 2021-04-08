@@ -98,10 +98,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias emacs="emacsclient -t
-"
-alias cat="ccat"
-alias diff="diff-so-fancy"
+alias emacs="emacsclient -t"
+
 #alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
@@ -118,7 +116,7 @@ export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
 #fortune .ascii/fortune | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
-
+export ANSIBLE_NOCOWS=1
 
 export RUST_SRC_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/
 

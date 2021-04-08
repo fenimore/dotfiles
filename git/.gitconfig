@@ -4,14 +4,11 @@
 
 [user]
 	name = Fenimore Love
-
+	email = exorable.ludos@gmail.com
 
 [format]
 	pretty = "%H %ci %ce %ae %d %s"
 
-[pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
 
 [alias]
 	st = status
@@ -20,9 +17,18 @@
 	mg = !git remote update --prune && git merge --ff-only @{u}%
 	lg = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	pub = !git push -u origin $(git branch-name)
-[commit]
-	gpgsign = true
 [push]
 	default = current
+
+[commit]
+	gpgsign = false
+
+[push]
+	default = current
+
+[pull]
+	rebase = true
+	default = current
+
 [merge]
 	ff = false
