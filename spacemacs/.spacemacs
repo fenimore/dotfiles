@@ -37,7 +37,6 @@ This function should only modify configuration layer settings."
      html
      sql
      javascript
-     rust
      terraform
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -50,24 +49,21 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      markdown
-     multiple-cursors
      neotree
      org
      groovy
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
      syntax-checking
      version-control
      csv
      python
+     (python :variables python-backend 'anaconda)
      ansible
      themes-megapack
      sphinx
-     scala
      json
-     web-beautify
+     prettier
+     (json :variables json-fmt-on-save t)
+     (json :variables json-fmt-tool 'prettier)
      )
 
    ;; List of additional packages that will be installed without being
@@ -458,7 +454,8 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Anaconda mode?
   ;; (setq python-python-command "/usr/local/bin/python")
-  ;;  (setq python-shell-interpreter "/usr/local/bin/python")
+  ;; (setq python-shell-interpreter "/usr/local/bin/python")
+  (setq debug-on-error t)
   )
 
 (defun dotspacemacs/user-load ()
@@ -474,92 +471,34 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  ;; Fix color console output
-  (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+  (setq json-indent-level 2)
+  (setq js-indent-level 2)
 
   ;; explicit for ansi-term
   (setq explicit-shell-file-name "/bin/zsh")
-  ;; Fuck highlighting current line
+  ;; Fix color console output
+  (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+  ;; Highlighting current line -1
   (global-hl-line-mode -1)
-
   (add-hook 'before-save-hook 'whitespace-cleanup)
-
   ;; Slower scrolling:
   (setq mouse-wheel-progressive-speed nil)
-  (setq mouse-wheel-scroll-amount '(2
-                                    ((shift) . 1)))
-                                        ; Show Git diff indicators on the left.
+  (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+  ;; Show Git diff indicators on the left.
   (setq git-gutter-fr+-side 'left-fringe)
   ;; Custom nav shortcuts
   (global-set-key [(control ?x)(?n)] 'next-buffer)
   (global-set-key [(control ?x)(?p)] 'previous-buffer)
 
-  (setq tide-format-options '(:IndentSize 2))
-
-  ;; On start up, none of this scratch nonsense
-  (add-hook 'emacs-startup-hook
-            (lambda ()
-              (kill-buffer "*scratch*")
-              (kill-buffer "*Messages*")
-              ))
-  ;; Web Mode
-  (defun my-web-mode-hook ()
-    "Hooks for Web mode."
-    (setq web-mode-markup-indent-offset 2))
-  (add-hook 'web-mode-hook 'my-web-mode-hook)
-
-  ;; Python
-  (add-hook 'python-mode-hook (lambda ()
-                                (require 'sphinx-doc)
-                                (sphinx-doc-mode t)))
-
   (with-eval-after-load 'ivy
     (setq ivy-initial-inputs-alist nil)
     )
-
-  ;; Scala
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; ./coursier bootstrap \             ;;
-  ;; --java-opt -Xss4m \                ;;
-  ;; --java-opt -Xms100m \              ;;
-  ;; --java-opt -Dmetals.client=emacs \ ;;
-  ;; org.scalameta:metals_2.12:X.X.X \  ;;
-  ;; -r bintray:scalacenter/releases \  ;;
-  ;; -r sonatype:snapshots \            ;;
-  ;; -o /usr/local/bin/metals-emacs -f  ;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  (setq-default dotspacemacs-configuration-layers
-                  '((scala :variables scala-backend 'scala-metals)))
-  (setq-default flycheck-scalastylerc "/usr/local/etc/scalastyle_config.xml")
-  (setq-default dotspacemacs-configuration-layers '((scala :variables scala-auto-insert-asterisk-in-comments t)))
-  (setq-default dotspacemacs-configuration-layers '((scala :variables scala-enable-eldoc t)))
-  (setq company-lsp-async t)
-  ;; Hack to make sure 'company-lsp is only pushed after company package is loaded
-  (use-package company
-    :config
-    (push 'company-lsp company-backends))
-
-  ;; JSON and WEB
-  ;(json :variables json-fmt-tool 'web-beautify-js)
-  ;(json :variables json-fmt-on-save t)
-  ;(add-hook 'web-mode-hook 'prettier-js-mode)
-
-  ;;(add-hook 'json-mode-hook 'prettier-js-mode)
-  ;;(eval-after-load 'json-mode
-    ;;'(add-hook 'json-mode-hook
-               ;;(lambda ()
-               ;;(add-hook 'before-save-hook 'prettier-js-mode))))
-
-
-  ;; JSON
-  (setq json-indent-level 2)
-  (setq js-indent-level 2)
 
   ;; Python Lint/Format
   (add-hook 'python-mode-hook
             (lambda ()
               (setq flycheck-python-flake8-executable "/usr/local/bin/flake8")
-              ;; setq flycheck-python-pylint-executable "/usr/local/bin/pylint")
               )
             )
   )

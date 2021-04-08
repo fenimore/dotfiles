@@ -57,7 +57,7 @@ export EDITOR='zile'
 export WORKON_HOME=$HOME/.virtualenvs
 export PATH="$PATH:/usr/local/opt/python/bin"
 export PYTHONDONTWRITEBYTECODE=1
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 
 source /usr/local/bin/virtualenvwrapper.sh
@@ -88,6 +88,7 @@ export PATH=$PATH:$GOPATH/bin
 alias cd..='cd ..'
 
 alias mkdir='mkdir -pv'
+
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 export XDG_CONFIG_HOME="/Users/flove/.config"
