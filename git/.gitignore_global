@@ -6,6 +6,7 @@ Justfile
 *.pyc
 .boto
 .DS_Store
+*.DS_Store*
 
 *.class
 *.cache

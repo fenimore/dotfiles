@@ -38,6 +38,7 @@ This function should only modify configuration layer settings."
      sql
      javascript
      terraform
+     lsp
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -56,12 +57,13 @@ This function should only modify configuration layer settings."
      version-control
      csv
      python
-     (python :variables python-backend 'anaconda)
      ansible
      themes-megapack
      sphinx
      json
      prettier
+     (python :variables python-backend 'lsp)
+     (python :variables python-formatter 'yapf)
      (json :variables json-fmt-on-save t)
      (json :variables json-fmt-tool 'prettier)
      )
@@ -490,6 +492,7 @@ before packages are loaded."
   ;; Custom nav shortcuts
   (global-set-key [(control ?x)(?n)] 'next-buffer)
   (global-set-key [(control ?x)(?p)] 'previous-buffer)
+  (setq backup-directory-alist `(("." . "~/.saves")))
 
   (with-eval-after-load 'ivy
     (setq ivy-initial-inputs-alist nil)

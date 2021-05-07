@@ -139,3 +139,4 @@ if [ -f ~/.zsh_secrets ]; then
 else
     print "404: ~/.zsh_secrets not found."
 fi
+export ANSIBLE_NOCOWS=1
