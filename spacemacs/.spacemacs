@@ -361,7 +361,7 @@ It should only modify the values of Spacemacs settings."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -457,7 +457,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Anaconda mode?
   ;; (setq python-python-command "/usr/local/bin/python")
   ;; (setq python-shell-interpreter "/usr/local/bin/python")
-  (setq debug-on-error t)
+  ;;(setq debug-on-error t)
   )
 
 (defun dotspacemacs/user-load ()
