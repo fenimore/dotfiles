@@ -98,7 +98,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias emacs="emacsclient -t"
+# alias emacs="emacsclient -t"
 
 #alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
@@ -123,3 +123,7 @@ export RUST_SRC_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/
 
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+
+workon py
+
+# sh .conky/start_conky.sh
