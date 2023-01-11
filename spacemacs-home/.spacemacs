@@ -471,6 +471,9 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; remove annoying undo tree files
+  (setq undo-tree-auto-save-history nil)
+
   ;; Fix color console output
   (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
